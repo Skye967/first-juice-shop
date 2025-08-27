@@ -58,20 +58,20 @@ export class AboutComponent implements OnInit {
         if (config.application.social.twitterUrl) {
           this.twitterUrl = config.application.social.twitterUrl
         }
-        if (config.application.social.facebookUrl) {
-          this.facebookUrl = config.application.social.facebookUrl
-        }
         if (config.application.social.slackUrl) {
           this.slackUrl = config.application.social.slackUrl
+        }
+        if (config.application.social.facebookUrl) {
+          this.facebookUrl = config.application.social.facebookUrl
         }
         if (config.application.social.redditUrl) {
           this.redditUrl = config.application.social.redditUrl
         }
-        if (config.application.social.pressKitUrl) {
-          this.pressKitUrl = config.application.social.pressKitUrl
-        }
         if (config.application.social.nftUrl) {
           this.nftUrl = config.application.social.nftUrl
+        }
+        if (config.application.social.pressKitUrl) {
+          this.pressKitUrl = config.application.social.pressKitUrl
         }
       }
     }, (err) => console.log(err))
