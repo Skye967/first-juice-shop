@@ -38,7 +38,14 @@ const entities = new Entities()
 const readFile = util.promisify(fs.readFile)
 
 function loadStaticData (file: string) {
-  const filePath = path.resolve('./data/static/' + file + '.yml')
+  const baseDir = path.resolve('./data/static')
+  // Validate filename to prevent path traversal: allow only alphanumeric, underscore, hyphen and dot
+  const safeFileNamePattern = /^[A-Za-z0-9._-]+$/
+  if (!safeFileNamePattern.test(file)) {
+    logger.error('Invalid filename for static data: "' + file + '"')
+    return Promise.resolve([])
+  }
+  const filePath = path.resolve(baseDir, file + '.yml')
   return readFile(filePath, 'utf8')
     .then(safeLoad)
     .catch(() => logger.error('Could not open file: "' + filePath + '"'))
